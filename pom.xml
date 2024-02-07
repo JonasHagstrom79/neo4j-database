@@ -41,11 +41,16 @@
     </dependencies>
 
     <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
+                <configuration>
+                    <mainClass>com.example.Neo4jPersonRegistrationApplication</mainClass>
+                </configuration>
             </plugin>
             <!-- Compiler plugin config -->
             <plugin>
