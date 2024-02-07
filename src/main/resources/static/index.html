@@ -1,10 +1,52 @@
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>Welcome</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Hello, World!</h1>
+    <h1>Register Person</h1>
+    <form id="registerForm">
+        <label for="gender">Kön:</label>
+        <input type="text" id="gender" name="gender"><br><br>
+        <label for="firstName">Förnamn:</label>
+        <input type="text" id="firstName" name="firstName"><br><br>
+        <label for="lastName">Efternamn:</label>
+        <input type="text" id="lastName" name="lastName"><br><br>
+        <label for="yearOfBirth">Födelseår:</label>
+        <!-- Ändra till input type="date" för att visa en kalender -->
+        <input type="date" id="yearOfBirth" name="yearOfBirth"><br><br>
+        <label for="address">Adress:</label>
+        <input type="text" id="address" name="address"><br><br>
+        <button type="button" onclick="submitForm()">Registrera</button>
+    </form>
+
+    <script>
+        function submitForm() {
+            var formData = {
+                gender: document.getElementById('gender').value,
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                // Konvertera datumet till enbart år eller det format du behöver
+                yearOfBirth: new Date(document.getElementById('yearOfBirth').value).getFullYear(),
+                address: document.getElementById('address').value
+            };
+
+            fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert('Person registered successfully: ' + data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
 </body>
 </html>

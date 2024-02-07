@@ -1,6 +1,7 @@
 package com.example.neo4jpersonregistration;
 
 public class Person {
+    private String gender;
     private String name;
     private String surname;
     private String address;

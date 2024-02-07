@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>Welcome</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Register Person</h1>
@@ -14,8 +13,7 @@
         <label for="lastName">Efternamn:</label>
         <input type="text" id="lastName" name="lastName"><br><br>
         <label for="yearOfBirth">Födelseår:</label>
-        <!-- Ändra till input type="date" för att visa en kalender -->
-        <input type="date" id="yearOfBirth" name="yearOfBirth"><br><br>
+        <input type="number" id="yearOfBirth" name="yearOfBirth"><br><br>
         <label for="address">Adress:</label>
         <input type="text" id="address" name="address"><br><br>
         <button type="button" onclick="submitForm()">Registrera</button>
@@ -27,8 +25,7 @@
                 gender: document.getElementById('gender').value,
                 firstName: document.getElementById('firstName').value,
                 lastName: document.getElementById('lastName').value,
-                // Konvertera datumet till enbart år eller det format du behöver
-                yearOfBirth: new Date(document.getElementById('yearOfBirth').value).getFullYear(),
+                yearOfBirth: document.getElementById('yearOfBirth').value,
                 address: document.getElementById('address').value
             };
 
@@ -50,3 +47,4 @@
     </script>
 </body>
 </html>
+```
